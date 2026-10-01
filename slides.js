@@ -1,8 +1,23 @@
 const descriptions = [
-  'Big ideas. Start here. An open source office suite, starting with Writer.',
+  'Big ideas. Start here. Writer, Slides, and Sheets: an open source office suite for documents, presentations, and spreadsheets.',
   'Write something great. Writer offers a familiar ribbon, styles, tables and pictures. DOCX, RTF, Markdown and text.',
-  'Your office. Everywhere. Writer is live on the web. macOS, Windows, Linux, iOS and Android are planned.',
-  'Open code. Shared ambition. Built on Starling, licensed under Apache 2.0. Only Writer is available so far.',
+  'Make your point. Slides brings themes, charts, animations, and speaker notes to your presentations. Open and save PPTX. This page runs on Starling Slides.',
+  'Let the numbers tell the story. Sheets combines formulas, tables, sorting, and filters. Open and save XLSX and CSV.',
+  'Your office. Everywhere. Documents, presentations, and spreadsheets, with a roadmap across macOS, Windows, Linux, iOS, Android, and the web.',
+  'Open code. Shared ambition. Writer, Slides, and Sheets. Built on Starling, licensed under Apache 2.0.',
+];
+const lastSlide = descriptions.length - 1;
+// The published controller URL carries the content revision for the whole deck.
+// Keep previews and PPTXs together across cached deployments.
+const slideVersion = new URL(import.meta.url).searchParams.get('v') || String(Date.now());
+const slideAsset = name => `slides/${name}?v=${slideVersion}`;
+const actions = [
+  ['Meet the apps', '#2'],
+  ['Open Writer', 'https://writer.starling.build/'],
+  ['About Slides', '#slides-details'],
+  ['About Sheets', '#sheets-details'],
+  ['Explore the apps', '#2'],
+  ['Explore the code', 'https://github.com/starling-build/starling'],
 ];
 const canvas = document.getElementById('starling');
 const stage = document.getElementById('stage');
@@ -10,29 +25,29 @@ const poster = document.getElementById('poster');
 const status = document.getElementById('load-status');
 const prev = document.getElementById('previous'), next = document.getElementById('next');
 const dots = [...document.querySelectorAll('[data-slide]')];
-let app, index = Math.max(0, Math.min(3, (Number(location.hash.slice(1)) || 1) - 1));
+let app, index = Math.max(0, Math.min(lastSlide, (Number(location.hash.slice(1)) || 1) - 1));
 let portrait;
 const isPortrait = () => canvas.clientWidth < canvas.clientHeight;
 function update() {
-  poster.querySelector('source').srcset = `slides/tall-${index + 1}.png`;
+  poster.querySelector('source').srcset = slideAsset(`tall-${index + 1}.png`);
   // Use the canvas's aspect ratio, which excludes the HTML controls.
   poster.querySelector('source').media = isPortrait() ? 'all' : 'not all';
-  poster.querySelector('img').src = `slides/wide-${index + 1}.png`;
+  poster.querySelector('img').src = slideAsset(`wide-${index + 1}.png`);
   poster.querySelector('img').alt = descriptions[index];
   document.getElementById('slide-description').textContent = descriptions[index];
-  canvas.setAttribute('aria-label', `Slide ${index + 1} of 4: ${descriptions[index]}`);
-  document.getElementById('position').textContent = `0${index + 1} / 04`;
-  prev.disabled = index === 0; next.disabled = index === 3;
+  canvas.setAttribute('aria-label', `Slide ${index + 1} of ${descriptions.length}: ${descriptions[index]}`);
+  document.getElementById('position').textContent = `0${index + 1} / 0${descriptions.length}`;
+  prev.disabled = index === 0; next.disabled = index === lastSlide;
   dots.forEach((dot, i) => i === index ? dot.setAttribute('aria-current', 'step') : dot.removeAttribute('aria-current'));
   const action = document.getElementById('slide-action');
-  action.href = index === 3 ? 'https://github.com/starling-build/starling/tree/office/apps/OfficeApp' : 'https://writer.starling.build/';
-  action.innerHTML = `${index === 3 ? 'Explore the code' : index === 1 ? 'Try Writer' : 'Start writing'} <span aria-hidden="true">↗</span>`;
-  stage.style.background = ['#2449df', '#f7f9ff', '#edf2ff', '#101d37'][index];
-  document.getElementById('download-deck').href = `slides/landing-${isPortrait() ? 'tall' : 'wide'}.pptx`;
+  action.href = actions[index][1];
+  action.innerHTML = `${actions[index][0]} <span aria-hidden="true">↗</span>`;
+  stage.style.background = ['#2449df', '#f7f9ff', '#fff3ed', '#edf9f2', '#edf2ff', '#101d37'][index];
+  document.getElementById('download-deck').href = slideAsset(`landing-${isPortrait() ? 'tall' : 'wide'}.pptx`);
   history.replaceState(null, '', `#${index + 1}`);
 }
 function go(to) {
-  index = Math.max(0, Math.min(3, to));
+  index = Math.max(0, Math.min(lastSlide, to));
   app?.swift.office_landing_go(index);
   update();
 }
@@ -43,12 +58,20 @@ window.addEventListener('hashchange', () => go((Number(location.hash.slice(1)) |
 const story = document.getElementById('story');
 document.getElementById('read-text').addEventListener('click', () => story.showModal());
 document.getElementById('close-story').addEventListener('click', () => story.close());
+document.getElementById('slide-action').addEventListener('click', event => {
+  const href = actions[index][1];
+  if (href === '#slides-details' || href === '#sheets-details') {
+    event.preventDefault();
+    story.showModal();
+    document.querySelector(href).scrollIntoView({ block: 'start' });
+  }
+});
 window.addEventListener('keydown', event => {
   if (story.open || event.altKey || event.ctrlKey || event.metaKey || (app && event.target === canvas)) return;
   if (['ArrowRight', 'ArrowDown', 'PageDown'].includes(event.key)) { event.preventDefault(); go(index + 1); }
   if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(event.key)) { event.preventDefault(); go(index - 1); }
   if (event.key === 'Home') { event.preventDefault(); go(0); }
-  if (event.key === 'End') { event.preventDefault(); go(3); }
+  if (event.key === 'End') { event.preventDefault(); go(lastSlide); }
 });
 // Navigation works on the rendered slide previews while the live app starts.
 let touchStart;
@@ -80,8 +103,8 @@ try {
     fonts: `${config.base}fonts/manifest.json`,
     initialRoute: `/office-landing${isPortrait() ? '/portrait' : ''}`,
     initialFiles: [
-      { name: 'landing-wide.pptx', url: 'slides/landing-wide.pptx' },
-      { name: 'landing-tall.pptx', url: 'slides/landing-tall.pptx' },
+      { name: 'landing-wide.pptx', url: slideAsset('landing-wide.pptx') },
+      { name: 'landing-tall.pptx', url: slideAsset('landing-tall.pptx') },
     ],
     onPhase: () => { status.textContent = 'Starting live slides…'; },
     onFontStatus: ({ pending, failed }) => {
