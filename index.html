@@ -24,11 +24,22 @@
   <main id="main">
     <section class="wrap hero" aria-labelledby="hero-title">
       <p class="eyebrow"><span class="dot"></span> THE OPEN SOURCE OFFICE SUITE</p>
-      <div class="hero-heading"><h1 id="hero-title">Big ideas.<br><em>Start here.</em></h1><div class="hero-copy"><p>Your next document deserves a fresh start.<br>An open source office suite, beginning with Writer.</p><div class="hero-actions"><a class="button" href="https://writer.starling.build">Try Writer <span aria-hidden="true">↗</span></a><a class="button button-outline" href="https://github.com/starling-build/starling">View on GitHub <span aria-hidden="true">↗</span></a></div><span class="cta-note"><span class="dot"></span> Writer is live on the web. More apps are on the way.</span></div></div>
-      <figure class="writer-showcase">
+      <div class="hero-heading"><h1 id="hero-title">Big ideas.<br><em>Start here.</em></h1><div class="hero-copy"><p>Your next document deserves a fresh start.<br>An open source office suite, beginning with Writer.</p><div class="hero-actions"><a class="button" data-try-writer href="https://writer.starling.build/">Try it here <span aria-hidden="true">↓</span></a><a class="button button-outline" href="https://github.com/starling-build/starling">View on GitHub <span aria-hidden="true">↗</span></a></div><span class="cta-note"><span class="dot"></span> Writer is live on the web. More apps are on the way.</span></div></div>
+      <figure class="writer-showcase" id="writer-demo">
+        <div class="embed-toolbar" hidden>
+          <div><span class="embed-brand">W</span><strong>Writer, right here.</strong></div>
+          <div class="embed-actions">
+            <button class="button" id="embed-start" type="button">Try it here <span aria-hidden="true">↓</span></button>
+            <button class="embed-control" id="embed-preview" type="button" hidden>Show screenshot</button>
+            <button class="embed-control" id="embed-expand" type="button" hidden>Expand editor</button>
+            <a class="embed-control" href="https://writer.starling.build/" target="_blank" rel="noopener" title="Start a separate Writer session in a new tab">Open separately ↗</a>
+          </div>
+        </div>
+        <p class="embed-note" id="embed-note" hidden>Try the full editor. A desktop browser and keyboard work best.</p>
         <a class="writer-preview" href="img/writer.png" aria-label="View the Writer screenshot at full size">
           <img src="img/writer.png" width="1440" height="960" fetchpriority="high" alt="Writer with its cobalt title bar, Home ribbon, font and paragraph controls, named style gallery, and document outline beside a formatted document with headings, lists, and a table.">
         </a>
+        <div class="embed-workspace" id="embed-workspace" hidden></div>
         <figcaption class="preview-caption"><span>Inside Writer: the refreshed interface, with a real document open.</span><a href="img/writer.png">View full-size screenshot <span aria-hidden="true">↗</span></a></figcaption>
       </figure>
       <div class="preview-highlights">
@@ -47,5 +58,6 @@
     <section class="closing"><div class="wrap closing-inner"><div><p class="eyebrow">LESS WAITING. MORE WRITING.</p><h2>Your next chapter.<br><em>Make it happen.</em></h2></div><a class="button" href="https://writer.starling.build">Open Writer <span aria-hidden="true">↗</span></a></div></section>
   </main>
   <footer class="wrap footer"><a class="brand" href="https://starling.build"><img src="favicon.svg" width="28" height="28" alt="">Starling<span class="brand-office">Office</span></a><p>An open source office suite. Starting with Writer.</p><div><a href="https://starling.build">Starling ↗</a><a href="https://github.com/starling-build/starling">GitHub ↗</a></div></footer>
+  <script src="embed.js" defer></script>
 </body>
 </html>
