@@ -1,0 +1,170 @@
+[
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/Selawik-Regular.ttf",
+    "families": [
+      "Selawik"
+    ]
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/Selawik-Semibold.ttf",
+    "families": [
+      "Selawik Semibold",
+      "Selawik"
+    ]
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/DejaVuSans.ttf",
+    "families": [
+      "DejaVu Sans"
+    ],
+    "fallback": true
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/CupertinoIcons.ttf",
+    "families": [
+      "CupertinoIcons"
+    ]
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/FluentSystemIcons-Regular.ttf",
+    "families": [
+      "FluentSystemIcons"
+    ]
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/Caladea-Bold.ttf",
+    "families": [
+      "Caladea"
+    ],
+    "lazy": true
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/Caladea-BoldItalic.ttf",
+    "families": [
+      "Caladea"
+    ],
+    "lazy": true
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/Caladea-Italic.ttf",
+    "families": [
+      "Caladea"
+    ],
+    "lazy": true
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/Caladea-Regular.ttf",
+    "families": [
+      "Caladea"
+    ],
+    "lazy": true
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/Carlito-Bold.ttf",
+    "families": [
+      "Carlito"
+    ]
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/Carlito-BoldItalic.ttf",
+    "families": [
+      "Carlito"
+    ]
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/Carlito-Italic.ttf",
+    "families": [
+      "Carlito"
+    ]
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/Carlito-Regular.ttf",
+    "families": [
+      "Carlito"
+    ]
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/LiberationMono-Bold.ttf",
+    "families": [
+      "Liberation Mono"
+    ],
+    "lazy": true
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/LiberationMono-BoldItalic.ttf",
+    "families": [
+      "Liberation Mono"
+    ],
+    "lazy": true
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/LiberationMono-Italic.ttf",
+    "families": [
+      "Liberation Mono"
+    ],
+    "lazy": true
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/LiberationMono-Regular.ttf",
+    "families": [
+      "Liberation Mono"
+    ],
+    "lazy": true
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/LiberationSans-Bold.ttf",
+    "families": [
+      "Liberation Sans"
+    ],
+    "lazy": true
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/LiberationSans-BoldItalic.ttf",
+    "families": [
+      "Liberation Sans"
+    ],
+    "lazy": true
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/LiberationSans-Italic.ttf",
+    "families": [
+      "Liberation Sans"
+    ],
+    "lazy": true
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/LiberationSans-Regular.ttf",
+    "families": [
+      "Liberation Sans"
+    ],
+    "lazy": true
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/LiberationSerif-Bold.ttf",
+    "families": [
+      "Liberation Serif"
+    ],
+    "lazy": true
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/LiberationSerif-BoldItalic.ttf",
+    "families": [
+      "Liberation Serif"
+    ],
+    "lazy": true
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/LiberationSerif-Italic.ttf",
+    "families": [
+      "Liberation Serif"
+    ],
+    "lazy": true
+  },
+  {
+    "url": "runtime/4fec905713b8f2f7/fonts/LiberationSerif-Regular.ttf",
+    "families": [
+      "Liberation Serif"
+    ],
+    "lazy": true
+  }
+]

@@ -14,8 +14,8 @@ const slideAsset = name => `slides/${name}?v=${slideVersion}`;
 const actions = [
   ['Meet the apps', '#2'],
   ['Open Writer', 'https://writer.starling.build/'],
-  ['About Slides', '#slides-details'],
-  ['About Sheets', '#sheets-details'],
+  ['Open Slides', 'https://slides.starling.build/'],
+  ['Open Sheets', 'https://sheets.starling.build/'],
   ['Explore the apps', '#2'],
   ['Explore the code', 'https://github.com/starling-build/starling'],
 ];
@@ -55,19 +55,8 @@ prev.addEventListener('click', () => go(index - 1));
 next.addEventListener('click', () => go(index + 1));
 dots.forEach(dot => dot.addEventListener('click', () => go(Number(dot.dataset.slide))));
 window.addEventListener('hashchange', () => go((Number(location.hash.slice(1)) || 1) - 1));
-const story = document.getElementById('story');
-document.getElementById('read-text').addEventListener('click', () => story.showModal());
-document.getElementById('close-story').addEventListener('click', () => story.close());
-document.getElementById('slide-action').addEventListener('click', event => {
-  const href = actions[index][1];
-  if (href === '#slides-details' || href === '#sheets-details') {
-    event.preventDefault();
-    story.showModal();
-    document.querySelector(href).scrollIntoView({ block: 'start' });
-  }
-});
 window.addEventListener('keydown', event => {
-  if (story.open || event.altKey || event.ctrlKey || event.metaKey || (app && event.target === canvas)) return;
+  if (event.altKey || event.ctrlKey || event.metaKey || (app && event.target === canvas)) return;
   if (['ArrowRight', 'ArrowDown', 'PageDown'].includes(event.key)) { event.preventDefault(); go(index + 1); }
   if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(event.key)) { event.preventDefault(); go(index - 1); }
   if (event.key === 'Home') { event.preventDefault(); go(0); }
