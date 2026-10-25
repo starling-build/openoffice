@@ -491,6 +491,22 @@ article {
   color: var(--ink);
   background: #fff;
 }
+.office-promises {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 28px 0 0;
+}
+.office-promises li {
+  padding: 8px 12px;
+  border: 1px solid #ffffff70;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+}
 .app-heading {
   display: flex;
   align-items: center;
